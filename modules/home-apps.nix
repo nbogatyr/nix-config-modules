@@ -50,6 +50,7 @@ in {
   options = {
     homeApps = mkOption {
       type = types.listOf homeAppType;
+      default = [];
       description = lib.mdDoc ''
         A helper for instantiating applications that only add a package to
         `home.packages`. This generates a single application per package, so
@@ -66,7 +67,7 @@ in {
             };
       '';
     };
-  };
+      };
   config = {
     apps = listToAttrs (concatLists (map
       (homeApp: map (pkg: {
